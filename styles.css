@@ -1,0 +1,290 @@
+
+.logged-in, .logged-out {
+  display: none;
+}
+
+.nav-mobile li {
+  cursor: pointer;
+}
+
+.brand-logo img {
+  width: 120px;
+  margin-top: 6px;
+
+}
+
+#main-container {
+  margin-top: 15px;
+}
+
+.row .col.jot-list {
+  padding: 0 0.9rem;
+}
+
+.collection {
+  overflow: visible;
+}
+
+.collection .collection-item.editable {
+  margin-bottom: 50px;
+  outline: none;
+  background: rgb(82, 82, 82);
+  color: white;
+  cursor: text;
+}
+
+.collection .collection-item {
+  display: block;
+  position: relative;
+  transition: margin 0s;
+  cursor: pointer;
+  min-height: 43px;
+
+}
+
+.collection .collection-item i.material-icons {
+  position: absolute;
+  left: -25px;
+  opacity: 0;
+  cursor: move;
+}
+
+.collection .collection-item .text {
+  display: block;
+  max-width: 100%;
+  max-height: 22px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.collection .collection-item .text:focus {
+  outline: none;
+}
+
+.collection .collection-item:hover {
+  background: rgb(220, 220, 220);
+  cursor: text;
+}
+
+.collection .collection-item:hover i {
+  opacity: 0.6;
+}
+
+.collection .collection-item.editable:hover {
+  background: rgb(82, 82, 82);
+}
+
+.collection .collection-item.ghost {
+  background: rgb(255,160,19);
+  color: white;
+}
+#notes-collection .collection-item:hover {
+  cursor: pointer;
+}
+
+#notes-collection .collection-item .note-contain {
+  display: block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 100%;
+  color: rgb(140, 140, 140);
+}
+
+#notes-collection .collection-item .text {
+  display: inline;
+  font-weight: 600;
+  color: black;
+}
+
+#notes-collection .collection-item .content {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-left: 10px;
+  font-weight: lighter;
+}
+
+.add-item {
+  position: relative;
+  width: 100px;
+  text-align: right;
+  color: rgb(181, 181, 181);
+  cursor: pointer;
+}
+.add-item i.material-icons {
+  position: absolute;
+  left: 0;
+  font-size: 22px;
+}
+.add-item:hover {
+  color: rgb(255,160,19)
+}
+.add-item:hover i {
+  background: rgb(255, 160, 19);
+  border-radius: 50%;
+  color: white;
+}
+
+#modal-note .modal-content {
+  padding-bottom: 6px;
+}
+
+#modal-note .modal-content .title {
+  margin-bottom: 4px;
+}
+
+#modal-note .modal-content .content{
+  min-height: 100px;
+  margin: 0;
+}
+
+#modal-note .modal-content .title,
+#modal-note .modal-content .content{
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+#modal-note .modal-content.editable .title,
+#modal-note .modal-content.editable .content {
+  border: 2px solid rgb(232, 231, 231);
+}
+#modal-note .modal-content.editable .title:focus,
+#modal-note .modal-content.editable .content:focus {
+  outline: none;
+  border: 2px solid #26a69a;
+}
+
+/*  !!! What ???  */
+#modal-note .title[contentEditable=true]:empty:not(:focus):before,
+#modal-note .content[contentEditable=true]:empty:not(:focus):before{
+  content: attr(data-text);
+  opacity: 0.5;
+}
+
+#modal-note .modal-footer {
+  text-align: left;
+  width: 100%;
+  padding: 5px 25px 10px;
+  height: auto;
+}
+
+#modal-note .cancel.grey.lighten-1:hover {
+  background-color: #cecece !important;
+}
+#modal-note .delete.red:hover {
+  background-color: rgb(242, 100, 90) !important;
+}
+
+#modal-note .edit-save-btn.edit {
+  background: orange;
+}
+
+
+
+/* EDIT ITEM WIDGET */
+
+#edit-item-widget {
+  display: none;
+  position: fixed;
+}
+
+/* TEXT EDITOR CUSTOM STYLES */
+
+.editor-wrapper * {
+  box-sizing: border-box;
+  
+}
+
+.editor-wrapper b { 
+  font-weight: 600;
+}
+
+
+.editor-wrapper .text-area {
+  height: 300px;
+  border: 1px solid lightgrey;
+  padding: 5px;
+}
+
+.editor-wrapper .toolbar {
+  display: none;
+  flex-wrap: wrap;
+  margin: 0;
+  align-items: center;
+  padding: 5px;
+}
+
+.editor-wrapper .toolbar i {
+  display: block;
+}
+
+.editor-wrapper .toolbar-break {
+  height: 20px;
+  border-left: 1px solid lightgrey;
+  margin: 0 5px;
+}
+
+.editor-wrapper .btn-group {
+  display: flex;
+}
+
+.editor-wrapper .toolbar-btn:hover,
+.editor-wrapper .drop-trigger:hover {
+  background: lightgrey;
+  cursor: pointer;
+}
+
+.editor-wrapper .toolbar-btn.active {
+  background: lightgrey;
+}
+
+.editor-wrapper .drop-container {
+  position: relative;
+  display: inline-block;
+}
+
+.editor-wrapper .fontName-container span {
+  width: 96px;
+  text-align: center;
+}
+
+.editor-wrapper .drop-trigger {
+  display: flex;
+  align-items: center;
+}
+
+.editor-wrapper .drop-menu {
+  list-style: none;
+  padding: 0;
+  display: none;
+  position: absolute;
+  box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14);
+  white-space:  nowrap;
+  background: white;
+  z-index: 1;
+}
+
+.editor-wrapper .drop-item {
+  padding: 3px 6px;
+}
+
+.editor-wrapper .drop-item:hover {
+  background: lightgrey;
+}
+
+.editor-wrapper .text-area ul {
+  padding-left: 20px;
+  margin: 0;
+}
+
+.editor-wrapper .text-area ul > li {
+  list-style-type: disc;
+}
+
+@media (max-width: 600px){
+  .brand-logo img {
+    width: 100px;
+  }
+}

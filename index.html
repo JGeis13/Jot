@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Jot</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- MATERIALIZE -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <!-- Element.classList polyfill -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/classlist/1.2.20171210/classList.min.js'></script>
+
+    <!-- SORTABLEjs -->
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+
+  </head>
+  <body class='grey lighten-3'>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    
+  <nav class='z-depth-0 grey lighten-4'>
+    <div class="nav-wrapper container">
+      <a class="brand-logo">
+        <img src="img/jotLogo.svg" >
+      </a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li class='logged-in'>
+          <a href='#' class='grey-text modal-trigger' data-target='modal-account'>Account</a>
+        </li>
+        <li class='logged-in'>
+          <a href='#' class='grey-text' id='logout'>Logout</a>
+        </li>
+        <li class='logged-out'>
+          <a href='#' class='grey-text modal-trigger' data-target='modal-login'>Login</a>
+        </li>
+        <li class='logged-out'>
+          <a href='#' class='grey-text modal-trigger' data-target='modal-signup'>Sign Up</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div id='main-container' class='container'>
+    <div class="row logged-in">
+      
+      <!-- TODOS COLLECTION -->
+      <div class="col s12 l6 jot-lists">
+        <h5 class='grey-text'>Todos</h5>
+        <ul id='todos-collection' class="collection">
+          <!-- Dynamic list built from data -->
+        </ul>
+        <div id='add-todo' class='add-item'><i class='material-icons'>add</i>Add Todo</div>
+      </div>
+
+      <!-- NOTES COLLECTION -->
+      <div class="col s12 l6 jot-list">
+        <h5 class='grey-text'>Notes</h5>
+        <ul id='notes-collection' class="collection modal-trigger" href='#modal-note'>
+          <!-- Dynamic list built from data -->
+        </ul>
+         <div id='add-note' class='add-item'><i class='material-icons'>add</i>Add Note</div>
+      </div>
+
+    </div> <!-- end row -->
+  </div> <!-- end main-container -->
+
+
+  <!-- LOGGED OUT VIEW -->
+  <div id="alt-view" class='logged-out center-align'>
+    <h5>Please log in to view items</h5>
+  </div>
+
+
+   <!-- NOTE MODAL -->
+  <div id="modal-note" class="modal">
+    <div class="modal-content">
+      <h4 class='title' data-text='Enter Note Title'></h4>
+      <div class='content' data-text='Enter note content'></div>
+    </div>
+    <div class="modal-footer">
+      <a href="#" class="btn edit edit-save-btn">Edit</a>
+      <a href="#" class="btn grey lighten-1 cancel ">Cancel</a>
+      <a href="#" class="btn red delete right">Delete</a>
+    </div>
+  </div>
+
+  <!-- SIGN UP MODAL -->
+  <div id="modal-signup" class="modal">
+    <div class="modal-content">
+      <h4>Create New Account</h4>
+      <form id='signup-form'>
+        <div class='input-field'>
+          <input type='email' id='signup-email' required/>
+          <label for='signup-email'>Email Address</label>
+        </div>
+        <div class='input-field'>
+          <input type='password' id='signup-password' required/>
+          <label for='signup-password'>Password</label>
+        </div>
+        <button class='btn'>Sign Up</button>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <a href="#" class="modal-close waves-effect waves-blue btn blue darken-4 google-signup">Sign Up With Google</a>
+    </div>
+  </div>
+
+
+  <!-- LOGIN MODAL -->
+  <div id="modal-login" class="modal">
+    <div class="modal-content">
+      <h4>Login</h4>
+      <form id='login-form'>
+        <div class='input-field'>
+          <input type='email' id='login-email' required/>
+          <label for='login-email'>Email Address</label>
+        </div>
+        <div class='input-field'>
+          <input type='password' id='login-password' required/>
+          <label for='login-password'>Password</label>
+        </div>
+        <button class='btn'>Login</button>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <a href="#" class="modal-close waves-effect waves-blue btn blue darken-4 google-signin">Sign In With Google</a>
+    </div>
+  </div>
+
+  <!-- ACCOUNT MODAL -->
+  <div id="modal-account" class="modal">
+    <div class="modal-content">
+      <h4>Account Details</h4>
+      <div class='info'></div>
+    </div>
+  </div>
+
+  <!-- EDIT ITEM WIDGET -->
+  <div id='edit-item-widget'>
+    <button class='btn save'>Save</button>
+    <button class='btn-flat cancel'>Cancel</button>
+    <button class='btn red right delete'>Delete</button>
+  </div>
+
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/6.0.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.0.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.0.1/firebase-firestore.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#config-web-app -->
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyDvXQcRpf-oJEWE_N4g-NEUOz-Z_3zZvk8",
+      authDomain: "remember-1.firebaseapp.com",
+      databaseURL: "https://remember-1.firebaseio.com",
+      projectId: "remember-1",
+      storageBucket: "remember-1.appspot.com",
+      messagingSenderId: "479375108986",
+      appId: "1:479375108986:web:50438316fc3751b4"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    const auth = firebase.auth()
+    const db = firebase.firestore()
+
+  </script>
+  
+  <script src='js/closestPolyfill.js'></script>
+  <script src='js/textEditor.js'></script>
+  <script src='js/auth.js'></script>
+  <script src="js/index.js"></script>
+
+  </body>
+</html>
