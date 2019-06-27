@@ -1,1 +1,6 @@
 firebase.json
+.firebase
+.firebaserc
+src/
+node_modules
+.babelrc

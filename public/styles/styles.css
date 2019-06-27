@@ -34,7 +34,8 @@
 }
 
 .collection .collection-item {
-  display: block;
+  display: flex;
+  flex-direction: row;
   position: relative;
   transition: margin 0s;
   cursor: pointer;
@@ -42,7 +43,7 @@
 
 }
 
-.collection .collection-item i.material-icons {
+.collection .collection-item > i.material-icons {
   position: absolute;
   left: -25px;
   opacity: 0;
@@ -51,6 +52,7 @@
 
 .collection .collection-item .text {
   display: block;
+  flex-grow: 1;
   max-width: 100%;
   max-height: 22px;
   white-space: nowrap;
@@ -79,6 +81,69 @@
   background: rgb(255,160,19);
   color: white;
 }
+
+#todos-collection .collection-item {
+  display: flex;
+  padding-left: 10px;
+}
+
+#todos-collection .collection-item .complete-btn,
+#todos-completed .collection-item .complete-btn {
+  border-radius: 50%;
+  background: white;
+  border: 1px solid lightgrey;
+  width: 22px;
+  height: 22px;
+  margin-right: 8px;
+}
+
+#todos-collection .collection-item .complete-btn:hover {
+  background: #9d9d9d;
+  cursor: pointer;
+}
+
+#todos-completed .collection-item {
+  color: rgb(121, 121, 121);
+}
+
+#todos-completed .collection-item .text{
+  text-decoration: line-through;
+}
+
+#todos-completed .reinstate-btn:hover i {
+  color: green;
+}
+
+#todos-completed .reinstate-btn:hover {
+  cursor: pointer;
+  border-color: green;
+}
+
+#todos-completed .collection-item > span:nth-child(3){
+  height: 24px;
+}
+
+#todos-completed .collection-item:hover .delete-btn {
+  display: block;
+}
+
+#todos-completed .delete-btn {
+  color: rgb(179, 179, 179);
+  display: none;
+}
+
+#todos-completed .delete-btn:hover {
+  color: rgb(250, 82, 82);
+  cursor: pointer;
+}
+
+
+.clear-all-badge:hover {
+  color: white;
+  background: rgb(245, 106, 106) !important;
+  cursor: pointer;
+}
+
 #notes-collection .collection-item:hover {
   cursor: pointer;
 }
@@ -133,6 +198,7 @@
 
 #modal-note .modal-content .title {
   margin-bottom: 4px;
+  text-overflow: ellipsis;
 }
 
 #modal-note .modal-content .content{
@@ -181,6 +247,22 @@
   background: orange;
 }
 
+
+/* CUSTOM DIALOG  */
+
+.custom-dialog-box button {
+  margin: 0 8px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background: white;
+  cursor: pointer;
+}
+
+.custom-dialog-box button:first-child {
+  background: teal;
+  color: white;
+
+}
 
 
 /* EDIT ITEM WIDGET */
@@ -282,6 +364,46 @@
 .editor-wrapper .text-area ul > li {
   list-style-type: disc;
 }
+
+/* CUSTOM COLLAPSIBLE LIST */
+
+.custom-collapsible ul {
+  margin-top: 0;
+  transition: all 0.5s;
+}
+
+.custom-collapsible ul.visible {
+  transition: all 0.5s;
+}
+
+.custom-collapsible > span {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgb(196, 195, 195);
+  margin-bottom: -1px;
+}
+
+.custom-collapsible span i :not(.reinstate-btn > i){
+  margin-top: 10px;
+}
+
+.custom-collapse-trigger > .badge,
+.custom-collapse-trigger > i {
+  margin-top: 10px;
+}
+
+/* Utility Classes */
+
+.hidden {
+  display: none;
+}
+
+.error-msg {
+  color: rgb(250, 116, 116);
+  text-align: center;
+}
+
+/* MEDIA QUERIES */
 
 @media (max-width: 600px){
   .brand-logo img {

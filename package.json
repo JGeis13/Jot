@@ -1,0 +1,25 @@
+{
+  "name": "jot-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx babel src --watch --out-dir public --source-maps inline"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JGeis13/Jot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JGeis13/Jot/issues"
+  },
+  "homepage": "https://github.com/JGeis13/Jot#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "babel-preset-minify": "^0.5.0"
+  }
+}
